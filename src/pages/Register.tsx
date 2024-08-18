@@ -8,7 +8,7 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:3000/api/register', {
+    const response = await fetch('http://localhost:3001/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,12 +24,32 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Register</button>
-    </form>
+    <>
+      <div className='flex flex-col lg:flex-row h-[94vh]'>
+        <div className='h-full flex flex-half flex-col justify-center px-7 px-[144px]'>
+          <h3 className='text-[48px] mb-7 lg:mb-12 font-anton uppercase'>Register Account</h3>
+          <form onSubmit={handleSubmit} className='flex flex-col space-y-4'>
+            <label>
+              Username
+            </label>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter your username" className='px-5 py-4 font-roboto' />
+            <label>
+              Email
+            </label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email address"  className='px-5 py-4 font-roboto' />
+            <label>
+              Password
+            </label>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password"  className='px-5 py-4 mb-7 lg:mb-12 font-roboto' />
+            <button type="submit" className='w-fit text-left font-anton uppercase text-lg px-4 py-3 bg-olive text-white cta'><span>Register</span></button>
+          </form>
+        </div>
+        <div className='h-full flex flex-half '>
+          <img src={'/food.avif'} alt='Food' className='h-full w-full object-cover' />
+        </div>
+      </div>
+    </>
+    
   );
 };
 
