@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as ROUTES from './constants/routes';
 import Header from './components/header';
 import { headerLinks } from './constants/headerLinks';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 /* Lazy importing page to increase performance */
@@ -11,8 +12,9 @@ const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-
 function App() {
+  const isAuthenticated = !!localStorage.getItem('token');
+
   return (
     <>
       <Router>
@@ -21,13 +23,10 @@ function App() {
           <Routes>
             <Route path={ROUTES.LOGIN} element={<Login />} />
             <Route path={ROUTES.SIGN_UP} element={<Register />} />
-            <Route
-            path={ROUTES.DASHBOARD}
-            element={
-                <Dashboard />
-            }
-          />
-                <Route path="*" element={<NotFound />} />
+            <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense> 
       </Router>

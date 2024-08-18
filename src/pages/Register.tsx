@@ -52,10 +52,10 @@ const Register = () => {
       if (response.ok) {
         console.log('User registered successfully!');
         setIsLoading(false);  // Stop loading state on success
-        goToLoginPage();
+        goToLoginPage()
       } else {
         const errorText = await response.text();
-        setError(`Registration failed! ${errorText}`);
+        setError(`Login failed! ${errorText}`);
         setIsLoading(false);  // Stop loading state on error
       }
     } catch (error) {
