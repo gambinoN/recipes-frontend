@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import * as ROUTES from './constants/routes';
-import Header from './components/header';
+import Header from './components/HeaderComponent';
 import { headerLinks } from './constants/headerLinks';
 import ProtectedRoute from './components/ProtectedRoute';
 

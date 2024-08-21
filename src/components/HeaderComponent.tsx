@@ -16,20 +16,20 @@ const Header: React.FC<HeaderProps> = memo(({ title, links, isLoggedIn }) => {
           <ul className="flex space-x-4">
             {links.map((link, index) => (
               <li key={index}>
-                <Link to={link.path} className="text-white hover:underline">
+                <Link to={link.path} className="text-black hover:underline">
                   {link.name}
                 </Link>
               </li>
             ))}
             {isLoggedIn ? (
               <li>
-                <Link to="/logout" className="text-white hover:underline">
+                <Link to="/logout" className="text-black hover:underline">
                   Logout
                 </Link>
               </li>
             ) : (
               <li>
-                <Link to="/login" className="text-white hover:underline">
+                <Link to="/login" className="text-black hover:underline">
                   Login
                 </Link>
               </li>
