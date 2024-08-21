@@ -29,16 +29,16 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    setIsLoading(true);  // Start the loading state
+    setIsLoading(true); 
   
     const error = validateForm(username, email, password);
     if (error) {
       setError(error);
-      setIsLoading(false);  // Stop the loading state if there's a validation error
+      setIsLoading(false); 
       return;
     }
   
-    setError('');  // Clear any previous errors
+    setError(''); 
   
     try {
       const response = await fetch('http://localhost:3001/auth/register', {
@@ -50,20 +50,17 @@ const Register = () => {
       });
   
       if (response.ok) {
-        console.log('User registered successfully!');
-        setIsLoading(false);  // Stop loading state on success
+        setIsLoading(false); 
         goToLoginPage()
       } else {
         const errorText = await response.text();
         setError(`Login failed! ${errorText}`);
-        setIsLoading(false);  // Stop loading state on error
+        setIsLoading(false); 
       }
     } catch (error) {
-      setError('An unexpected error occurred. Please try again.');
-      setIsLoading(false);  // Stop loading state on exception
+      setIsLoading(false);  
     }
   };
-  
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const password = e.target.value;
