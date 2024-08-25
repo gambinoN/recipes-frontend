@@ -11,6 +11,7 @@ const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const VerifyEmail = lazy(() => import('./pages/EmailVerification'))
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('token');
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path={ROUTES.LOGIN} element={<Login />} />
             <Route path={ROUTES.SIGN_UP} element={<Register />} />
+            <Route path={ROUTES.VERIFY} element={<VerifyEmail />} />
             <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
               <Route path="/dashboard" element={<Dashboard />} />
             </Route>

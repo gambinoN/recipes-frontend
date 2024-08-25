@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { lazy, useState } from 'react';
 import { passwordStrength } from 'check-password-strength'
 import FormInput from '../components/FormInput';
 import { useNavigate } from 'react-router-dom';
+
+const VerifyEmail = lazy(() => import('./EmailVerification'))
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -9,7 +11,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordStrengthText, setPasswordStrengthText] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const goToLoginPage = () => navigate('/login');
